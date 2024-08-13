@@ -121,7 +121,7 @@ SKY_OAP_ADDR：Skywalking后端地址
 kubectl create cm skywalking-lua-plug --from-file=main.lua -n ingress-nginx
 ```
 
-#### 3. 挂载相关 Lua 脚本进 Ingress Nginx Controller 的 Pod 中
+#### 3、挂载相关 Lua 脚本进 Ingress Nginx Controller 的 Pod 中
 &emsp;&emsp;修改 Ingress Nginx Controller 的 Deployment 配置，主要修改以下几点：
 
 1.环境变量
@@ -199,7 +199,7 @@ kubectl create cm skywalking-lua-plug --from-file=main.lua -n ingress-nginx
   name: skywalking-nginx-lua-agent
 ```
 
-#### 4.修改 Ingress Nginx Controller 所使用的configmap配置
+#### 4、修改 Ingress Nginx Controller 所使用的configmap配置
 ```
 plugins: "skywalking"
 lua-shared-dicts: "tracing_buffer: 100m"
@@ -219,12 +219,15 @@ log-format-upstream：log 格式，我们在这个里添加了一个 http_trace_
 低版本ingress-nginx-controller中的lua-shared-dicts: "tracing_buffer: 100m"可能需要改成lua-shared-dicts: "tracing_buffer: 100"
 ```
 
-#### 5. 重启 Pod 生效
+#### 5、重启 Pod 生效
 &emsp;&emsp;把下列的 xxx 换成 Ingress Nginx Controller 的 Pod 名称
 ```
 kubectl delete pod xxxx -n ingress-nginx
 ```
 
+#### 6、相关下载
+[main.lua](./resource/main.lua)
+[sk-lua-cm.zip](./resource/sk-lua-cm.zip)
 
 ## 参考
 
